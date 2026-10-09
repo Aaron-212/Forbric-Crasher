@@ -66,6 +66,26 @@
 
 ---
 
+## 构建与发布
+
+使用 Java 25 构建通用模组 JAR：
+
+```sh
+./gradlew universalJar
+```
+
+Gradle 自动从 Git 获取版本号。在没有本地修改的 `v1.2.3` 标签上构建时，JAR 文件名以及 Fabric 和
+NeoForge 元数据中的版本号均为 `1.2.3`。版本标签之后的提交会附带提交数量和哈希，例如
+`1.2.3-2-gabc1234`；没有版本标签时使用 `0.0.0-dev.<hash>`。已跟踪文件存在本地修改时会追加 `-dirty` 后缀。
+
+推送 `v*` 标签会触发发布工作流，在 `ubuntu-latest` 上使用 Java 25 构建，并创建附带通用 JAR 的
+GitHub Release 草稿。工作流通过 `-Pmod_version` 显式传入推送的标签，确保模组版本与该标签一致。
+从不含 Git 元数据的源码压缩包构建时，也可以手动覆盖版本号：
+
+```sh
+./gradlew universalJar -Pmod_version=1.2.3
+```
+
 ## 检测 Forbric 模组加载器
 
 > 以下调查由 Codex 完成。

@@ -4,6 +4,26 @@ Yeah I'm goona let Forbric crash anyway.
 
 A mod that intentionally crashes Minecraft when loaded using [Minecraft-Forbric-mod-loader](https://github.com/Ray-T-r/Minecraft-Forbric-mod-loader), but runs normally with Fabric or NeoForge.
 
+## Building and releases
+
+Build the universal mod JAR with Java 25:
+
+```sh
+./gradlew universalJar
+```
+
+Gradle derives the version from Git. A clean checkout of `v1.2.3` produces version `1.2.3` in the JAR filename and
+the Fabric and NeoForge metadata. Commits after a version tag include the commit distance and hash, such as
+`1.2.3-2-gabc1234`; untagged history uses `0.0.0-dev.<hash>`. Tracked local changes add a `-dirty` suffix.
+
+Pushing a `v*` tag runs the release workflow and creates a draft GitHub release with the universal JAR attached.
+The workflow explicitly passes the pushed tag as `-Pmod_version`, ensuring the release uses that tag's version.
+You can also use this override when building from a source archive without Git metadata:
+
+```sh
+./gradlew universalJar -Pmod_version=1.2.3
+```
+
 ## Detecting the Forbric mod loader
 
 > The following investigation was conducted by Codex.

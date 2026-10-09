@@ -5,13 +5,25 @@ plugins {
     id 'com.gradleup.shadow' version '9.4.3' apply false
 }
 
+def gitVersion = providers.exec {
+    workingDir rootProject.projectDir
+    commandLine 'git', 'describe', '--tags', '--match', 'v[0-9]*', '--always', '--dirty'
+}.standardOutput.asText.map { output ->
+    def description = output.trim()
+    description.startsWith('v') ? description.substring(1) : "0.0.0-dev.${description}"
+}
+
+def modVersion = providers.gradleProperty('mod_version').orElse(gitVersion).map { value ->
+    value.startsWith('v') ? value.substring(1) : value
+}.get()
+
 architectury {
     minecraft = project.minecraft_version
 }
 
 allprojects {
     group = rootProject.maven_group
-    version = rootProject.mod_version
+    version = modVersion
 }
 
 subprojects {
@@ -74,7 +86,7 @@ tasks.register('universalJar', Jar) {
     description = 'Packages shared, Fabric, and NeoForge code into one mod JAR.'
 
     archiveBaseName = rootProject.archives_name
-    archiveVersion = rootProject.mod_version
+    archiveVersion = rootProject.version.toString()
     destinationDirectory = layout.buildDirectory.dir('libs')
     duplicatesStrategy = DuplicatesStrategy.FAIL
 
