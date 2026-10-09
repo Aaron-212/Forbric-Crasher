@@ -17,7 +17,9 @@ the Fabric and NeoForge metadata. Commits after a version tag include the commit
 `1.2.3-2-gabc1234`; untagged history uses `0.0.0-dev.<hash>`. Tracked local changes add a `-dirty` suffix.
 
 Pushing a `v*` tag runs the release workflow and creates a draft GitHub release with the universal JAR attached.
-The workflow explicitly passes the pushed tag as `-Pmod_version`, ensuring the release uses that tag's version.
+To run it manually, open **Actions → Draft release → Run workflow** and enter an existing release tag, such as
+`v1.2.3`. The workflow checks out and builds that tag.
+The workflow explicitly passes the release tag as `-Pmod_version`, ensuring the release uses that tag's version.
 You can also use this override when building from a source archive without Git metadata:
 
 ```sh

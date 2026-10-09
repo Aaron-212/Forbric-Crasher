@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag to build (e.g. v1.2.3)
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -11,11 +17,14 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          ref: refs/tags/${{ env.RELEASE_TAG }}
 
       - name: Set up Java 25
         uses: actions/setup-java@v6
@@ -25,15 +34,12 @@ jobs:
           cache: gradle
 
       - name: Compile universal mod JAR
-        env:
-          RELEASE_TAG: ${{ github.ref_name }}
         run: ./gradlew universalJar "-Pmod_version=$RELEASE_TAG"
 
       - name: Create draft release
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-          RELEASE_TAG: ${{ github.ref_name }}
         run: |
           gh release create "$RELEASE_TAG" build/libs/*.jar \
             --draft \

@@ -79,7 +79,9 @@ NeoForge 元数据中的版本号均为 `1.2.3`。版本标签之后的提交会
 `1.2.3-2-gabc1234`；没有版本标签时使用 `0.0.0-dev.<hash>`。已跟踪文件存在本地修改时会追加 `-dirty` 后缀。
 
 推送 `v*` 标签会触发发布工作流，在 `ubuntu-latest` 上使用 Java 25 构建，并创建附带通用 JAR 的
-GitHub Release 草稿。工作流通过 `-Pmod_version` 显式传入推送的标签，确保模组版本与该标签一致。
+GitHub Release 草稿。也可以在 **Actions → Draft release → Run workflow** 中输入已有的发布标签
+（例如 `v1.2.3`）手动触发；工作流会检出并构建该标签。
+工作流通过 `-Pmod_version` 显式传入发布标签，确保模组版本与该标签一致。
 从不含 Git 元数据的源码压缩包构建时，也可以手动覆盖版本号：
 
 ```sh
