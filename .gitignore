@@ -1,0 +1,29 @@
+# Gradle and Architectury generated files
+.gradle/
+build/
+.architectury/
+.loom-cache/
+
+# Minecraft development runtime files
+run/
+runs/
+
+# IntelliJ IDEA and Eclipse local project files
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+bin/
+out/
+
+# JVM crash dumps
+hs_err_pid*.log
+replay_pid*.log
+*.hprof
+
+# macOS metadata
+.DS_Store
+._*

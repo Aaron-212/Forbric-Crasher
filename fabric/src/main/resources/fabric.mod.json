@@ -1,0 +1,26 @@
+{
+    "schemaVersion": 1,
+    "id": "forbric_crasher",
+    "version": "${version}",
+    "name": "Forbric Crasher",
+    "description": "Intentionally crashes when loaded by Minecraft-Forbric-mod-loader, while allowing normal use on Fabric and NeoForge.",
+    "authors": ["Aaron212"],
+    "contact": {
+        "homepage": "https://github.com/Aaron-212/Forbric-Crasher",
+        "sources": "https://github.com/Aaron-212/Forbric-Crasher",
+        "issues": "https://github.com/Aaron-212/Forbric-Crasher/issues"
+    },
+    "license": "MIT",
+    "environment": "*",
+    "entrypoints": {
+        "main": ["com.aaron212.forbriccrasher.fabric.ForbricCrasherFabric"],
+        "client": ["com.aaron212.forbriccrasher.fabric.client.ForbricCrasherFabricClient"]
+    },
+    "mixins": ["forbric_crasher.mixins.json"],
+    "depends": {
+        "fabricloader": ">=0.19.5",
+        "minecraft": "~26.2",
+        "java": ">=25",
+        "fabric-api": "*"
+    }
+}
