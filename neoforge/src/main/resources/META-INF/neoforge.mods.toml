@@ -9,9 +9,7 @@ version = "${version}"
 displayName = "Forbric Crasher"
 displayURL = "https://github.com/Aaron-212/Forbric-Crasher"
 authors = "Aaron212"
-description = '''
-Intentionally crashes when loaded by Minecraft-Forbric-mod-loader, while allowing normal use on Fabric and NeoForge.
-'''
+description = "Detect Forbric, then crash."
 
 [[dependencies.forbric_crasher]]
 modId = "neoforge"
@@ -23,7 +21,7 @@ side = "BOTH"
 [[dependencies.forbric_crasher]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.2,)"
+versionRange = "[26.2,26.3)"
 ordering = "NONE"
 side = "BOTH"
 

@@ -3,7 +3,7 @@
     "id": "forbric_crasher",
     "version": "${version}",
     "name": "Forbric Crasher",
-    "description": "Intentionally crashes when loaded by Minecraft-Forbric-mod-loader, while allowing normal use on Fabric and NeoForge.",
+    "description": "Detect Forbric, then crash.",
     "authors": ["Aaron212"],
     "contact": {
         "homepage": "https://github.com/Aaron-212/Forbric-Crasher",

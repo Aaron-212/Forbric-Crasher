@@ -2,12 +2,14 @@
 
 [English](README_EN.md)
 
-没错，我就是要让 Forbric 崩溃。
+没错，检测到 Forbric 就崩溃。让我们给 Forbric Loader 那雷霆的“兼容性”上再添把火吧！
 
 这个模组会在由 [Minecraft-Forbric-mod-loader](https://github.com/Ray-T-r/Minecraft-Forbric-mod-loader)
 加载时主动触发崩溃，但在 NeoForge 或 Fabric 下不会。
 
-> 以下文本特别鸣谢 [Ray-T-r/Minecraft-Forbric-mod-loader#59](https://github.com/Ray-T-r/Minecraft-Forbric-mod-loader/issues/59)
+本模组仅支持 Minecraft 26.2，因为 Forbric Loader 现在也只支持 26.2。
+
+> 以下文本特别鸣谢由 [cubk1](https://github.com/cubk1) 撰写的 [Ray-T-r/Minecraft-Forbric-mod-loader#59](https://github.com/Ray-T-r/Minecraft-Forbric-mod-loader/issues/59)
 
 ---
 

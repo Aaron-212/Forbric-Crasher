@@ -1,8 +1,14 @@
 # Forbric Crasher
 
-Yeah I'm goona let Forbric crash anyway.
+[简体中文](README.md)
 
-A mod that intentionally crashes Minecraft when loaded using [Minecraft-Forbric-mod-loader](https://github.com/Ray-T-r/Minecraft-Forbric-mod-loader), but runs normally with Fabric or NeoForge.
+Yeah, detect Forbric, then crash. Let's add fuel to Forbric Loader's spectacular “compatibility”!
+
+This mod intentionally crashes Minecraft when loaded by
+[Minecraft-Forbric-mod-loader](https://github.com/Ray-T-r/Minecraft-Forbric-mod-loader), but does not crash under
+NeoForge or Fabric.
+
+This mod only supports Minecraft 26.2, because Forbric Loader currently only supports 26.2.
 
 ## Building and releases
 
@@ -16,7 +22,8 @@ Gradle derives the version from Git. A clean checkout of `v1.2.3` produces versi
 the Fabric and NeoForge metadata. Commits after a version tag include the commit distance and hash, such as
 `1.2.3-2-gabc1234`; untagged history uses `0.0.0-dev.<hash>`. Tracked local changes add a `-dirty` suffix.
 
-Pushing a `v*` tag runs the release workflow and creates a draft GitHub release with the universal JAR attached.
+Pushing a `v*` tag runs the release workflow, builds with Java 25 on `ubuntu-latest`, and creates a draft GitHub
+release with the universal JAR attached.
 To run it manually, open **Actions → Draft release → Run workflow** and enter an existing release tag, such as
 `v1.2.3`. The workflow checks out and builds that tag.
 The workflow explicitly passes the release tag as `-Pmod_version`, ensuring the release uses that tag's version.
