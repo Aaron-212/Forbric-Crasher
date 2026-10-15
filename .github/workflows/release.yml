@@ -21,13 +21,13 @@ jobs:
       RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           ref: refs/tags/${{ env.RELEASE_TAG }}
 
       - name: Set up Java 25
-        uses: actions/setup-java@v6
+        uses: actions/setup-java@v6.1.0
         with:
           distribution: zulu
           java-version: "25"
