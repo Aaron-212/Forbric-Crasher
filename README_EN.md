@@ -12,11 +12,15 @@ This mod only supports Minecraft 26.2, because Forbric Loader currently only sup
 
 ## Building and releases
 
-Build the universal mod JAR with Java 25:
+Install [mise](https://mise.jdx.dev/) and Java 25, then build the universal mod JAR:
 
 ```sh
-./gradlew universalJar
+mise install
+mise exec -- gradle universalJar
 ```
+
+mise manages the Gradle version pinned in `mise.toml`. Set `JAVA_HOME` to your Java 25 installation;
+on macOS it defaults to `/Library/Java/JavaVirtualMachines/zulu-25.jdk/Contents/Home`.
 
 Gradle derives the version from Git. A clean checkout of `v1.2.3` produces version `1.2.3` in the JAR filename and
 the Fabric and NeoForge metadata. Commits after a version tag include the commit distance and hash, such as
@@ -30,7 +34,7 @@ The workflow explicitly passes the release tag as `-Pmod_version`, ensuring the 
 You can also use this override when building from a source archive without Git metadata:
 
 ```sh
-./gradlew universalJar -Pmod_version=1.2.3
+mise exec -- gradle universalJar -Pmod_version=1.2.3
 ```
 
 ## Detecting the Forbric mod loader

@@ -1,0 +1,6 @@
+[tools]
+gradle = "9.5.1"
+
+[env]
+# Keep the JDK provided by CI; default to the local Homebrew-managed Zulu installation.
+JAVA_HOME = "{{ get_env(name='JAVA_HOME', default='/Library/Java/JavaVirtualMachines/zulu-25.jdk/Contents/Home') }}"

@@ -70,11 +70,15 @@
 
 ## 构建与发布
 
-使用 Java 25 构建通用模组 JAR：
+安装 [mise](https://mise.jdx.dev/) 和 Java 25 后，构建通用模组 JAR：
 
 ```sh
-./gradlew universalJar
+mise install
+mise exec -- gradle universalJar
 ```
+
+mise 管理 `mise.toml` 中固定的 Gradle 版本。请将 `JAVA_HOME` 设置为 Java 25 的安装路径；
+macOS 上默认使用 `/Library/Java/JavaVirtualMachines/zulu-25.jdk/Contents/Home`。
 
 Gradle 自动从 Git 获取版本号。在没有本地修改的 `v1.2.3` 标签上构建时，JAR 文件名以及 Fabric 和
 NeoForge 元数据中的版本号均为 `1.2.3`。版本标签之后的提交会附带提交数量和哈希，例如
@@ -87,7 +91,7 @@ GitHub Release 草稿。也可以在 **Actions → Draft release → Run workflo
 从不含 Git 元数据的源码压缩包构建时，也可以手动覆盖版本号：
 
 ```sh
-./gradlew universalJar -Pmod_version=1.2.3
+mise exec -- gradle universalJar -Pmod_version=1.2.3
 ```
 
 ## 检测 Forbric 模组加载器

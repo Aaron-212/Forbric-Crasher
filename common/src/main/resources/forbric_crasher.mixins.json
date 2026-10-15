@@ -1,6 +1,7 @@
 {
   "required": true,
   "package": "com.aaron212.forbriccrasher.mixin",
+  "plugin": "com.aaron212.forbriccrasher.mixin.ForbricCrasherMixinPlugin",
   "compatibilityLevel": "JAVA_25",
   "minVersion": "0.8",
   "client": [
